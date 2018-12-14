@@ -1,3 +1,5 @@
+from random import *
+from string import *
 
 
 if __name__ == "__main__":
@@ -21,3 +23,16 @@ if __name__ == "__main__":
 				s - Down
 
 	"""
+	L=[]
+	n=win=False
+	score=pos=hightile=moves=0
+	for a in range(4):
+		l=[]
+		for b in range(4):
+			l.append(0)
+		L.append(l)
+    
+	cplayer=input("Enter Your Name : ")
+	cplayer=cplayer.capitalize()
+
+
