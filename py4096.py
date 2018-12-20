@@ -54,6 +54,52 @@ def printfunc():
 		print ("|")
 	print (" "*20,"--"*22)
 
+def main():
+	global moves
+	global pos
+	global hightile
+	global win
+	global n
+	while(n==False):
+		#checklose n=True
+		chance=input("Enter Where To Move : ")
+		if(chance=="4" or chance=="a"):
+			#moveleft pos=1
+			if(pos==1):
+				moves+=1
+				break
+			else:
+				print ("Its Not POSSIBLE!!")
+		elif(chance=="6" or chance=="d"):
+			#moveright pos=1
+			if(pos==1):
+				moves+=1
+				break
+			else:
+				print ("Its Not POSSIBLE!!")
+		elif(chance=="8" or chance=="w"):
+			#moveup pos=1
+			if(pos==1):
+				moves+=1
+				break
+			else:
+				print ("Its Not POSSIBLE!!")
+		elif(chance=="2" or chance=="s"):
+			#movedown pos=1
+			if(pos==1):
+				moves+=1
+				break
+			else:
+				print ("Its Not POSSIBLE!!")
+		elif(chance=="exo"):
+			n=True
+			win=True
+		else:
+			print ("Its Not POSSIBLE!!")
+		if(hightile==4096):
+			n=True
+			win=True
+
 
 if __name__ == "__main__":
 
@@ -85,6 +131,13 @@ if __name__ == "__main__":
 
 	cplayer=input("Enter Your Name : ")
 	cplayer=cplayer.capitalize()
-
 	randomfunc()
-	printfunc()
+	randomfunc()
+	while(win==False):
+		printfunc()
+		main()
+		randomfunc()
+	if(win==True):
+		print (cplayer,"Win!!")
+	else:
+		print (cplayer,"Lose Noob!!")
