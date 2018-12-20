@@ -14,6 +14,47 @@ def randomfunc():
 				L[a1][b1]=4
 			break
 
+def spacefunc(a,b):
+	if(L[a][b]<10):
+		return 5-1
+	elif(L[a][b]<100):
+		return 5-2
+	elif(L[a][b]<1000):
+		return 5-3
+	elif(L[a][b]<10000):
+		return 5-4
+	else:
+		return 1
+
+def hightilefunc():
+	global hightile
+	for a in range(4):
+		for b in range(4):
+			if(L[a][b]>hightile):
+				hightile=L[a][b]
+
+def printfunc():
+	hightilefunc()
+	print ("\n")
+	print ("#"*18)
+	print (">","Score :",score)
+	print (">","Moves :",moves)
+	print (">","Highest Tile :",hightile)
+	print ("#"*18,end="\n")
+	print (" "*20,"_"*42)
+	for a in range(4):
+		print (" "*20,end="")
+		print ("|",end="")
+		for b in range(4):
+			space=spacefunc(a,b)
+			if(L[a][b]==0):
+				print ("  ","  "*space,end="")
+			else:
+				print (L[a][b],"  "*space,end="")
+		print ("|")
+	print (" "*20,"--"*22)
+
+
 if __name__ == "__main__":
 
 	print("""
@@ -44,5 +85,6 @@ if __name__ == "__main__":
 
 	cplayer=input("Enter Your Name : ")
 	cplayer=cplayer.capitalize()
-	
+
 	randomfunc()
+	printfunc()
