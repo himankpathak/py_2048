@@ -57,7 +57,6 @@ def printfunc():
 def leftfunc(L,do):
 	global pos
 	global score
-	pos=0
 	for a in range(4):
 		for b in range(4):
 			if(L[a][b]!=0 and b-1>-1):
@@ -84,12 +83,43 @@ def leftfunc(L,do):
 				if(L[a][b]<0):
 					L[a][b]+=1000000
 
+def rightfunc(L,do):
+	global pos
+	global score
+	for a in range(4):
+		for b in range(-1,-5,-1):
+			if(L[a][b]!=0 and b+1<0):
+				while(n==False):
+					if(L[a][b]==L[a][b+1]):
+						pos=1
+						L[a][b+1]+=L[a][b+1]
+						score+=L[a][b+1]
+						L[a][b+1]-=1000000
+						L[a][b]=0
+						break
+					elif(L[a][b+1]!=0):
+						break
+					else:
+						pos=1
+						L[a][b+1]=L[a][b]
+						L[a][b]=0
+						if(b+2<0):
+							b+=1
+						else:
+							break
+		if do:
+			for b in range(4):
+				if(L[a][b]<0):
+					L[a][b]+=1000000
+
+
 def main(L):
 	global moves
 	global pos
 	global hightile
 	global win
 	global n
+	pos=0
 	while(n==False):
 		#checklose n=True
 		chance=input("Enter Where To Move : ")
@@ -101,7 +131,7 @@ def main(L):
 			else:
 				print ("Its Not POSSIBLE!!")
 		elif(chance=="6" or chance=="d"):
-			#moveright pos=1
+			rightfunc(L,1)
 			if(pos==1):
 				moves+=1
 				break
