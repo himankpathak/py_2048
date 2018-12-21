@@ -112,6 +112,35 @@ def rightfunc(L,do):
 				if(L[a][b]<0):
 					L[a][b]+=1000000
 
+def upfunc(L,do):
+	global pos
+	global score
+	for b in range(4):
+		for a in range(4):
+			if(L[a][b]!=0 and a-1>-1):
+				while(n==False):
+					if(L[a][b]==L[a-1][b]):
+						pos=1
+						L[a-1][b]+=L[a-1][b]
+						score+=L[a-1][b]
+						L[a-1][b]-=1000000
+						L[a][b]=0
+						break
+					elif(L[a-1][b]!=0):
+						break
+					else:
+						pos=1
+						L[a-1][b]=L[a][b]
+						L[a][b]=0
+						if(a-2>-1):
+							a-=1
+						else:
+							break
+		if do:
+			for a in range(4):
+				if(L[a][b]<0):
+					L[a][b]+=1000000
+
 
 def main(L):
 	global moves
@@ -138,7 +167,7 @@ def main(L):
 			else:
 				print ("Its Not POSSIBLE!!")
 		elif(chance=="8" or chance=="w"):
-			#moveup pos=1
+			upfunc(L,1)
 			if(pos==1):
 				moves+=1
 				break
