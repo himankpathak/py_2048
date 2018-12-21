@@ -54,7 +54,37 @@ def printfunc():
 		print ("|")
 	print (" "*20,"--"*22)
 
-def main():
+def leftfunc(L,do):
+	global pos
+	global score
+	pos=0
+	for a in range(4):
+		for b in range(4):
+			if(L[a][b]!=0 and b-1>-1):
+				while(n==False):
+					if(L[a][b]==L[a][b-1]):
+						pos=1
+						L[a][b-1]+=L[a][b-1]
+						score+=L[a][b-1]
+						L[a][b-1]-=1000000
+						L[a][b]=0
+						break
+					elif(L[a][b-1]!=0):
+						break
+					else:
+						pos=1
+						L[a][b-1]=L[a][b]
+						L[a][b]=0
+						if(b-2>-1):
+							b-=1
+						else:
+							break
+		if do:
+			for b in range(4):
+				if(L[a][b]<0):
+					L[a][b]+=1000000
+
+def main(L):
 	global moves
 	global pos
 	global hightile
@@ -64,7 +94,7 @@ def main():
 		#checklose n=True
 		chance=input("Enter Where To Move : ")
 		if(chance=="4" or chance=="a"):
-			#moveleft pos=1
+			leftfunc(L,1)
 			if(pos==1):
 				moves+=1
 				break
@@ -135,7 +165,7 @@ if __name__ == "__main__":
 	randomfunc()
 	while(win==False):
 		printfunc()
-		main()
+		main(L)
 		randomfunc()
 	if(win==True):
 		print (cplayer,"Win!!")
