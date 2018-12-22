@@ -141,6 +141,35 @@ def upfunc(L,do):
 				if(L[a][b]<0):
 					L[a][b]+=1000000
 
+def downfunc(L,do):
+	global pos
+	global score
+	for b in range(4):
+		for a in range(-1,-5,-1):
+			if(L[a][b]!=0 and a+1<0):
+				while(n==False):
+					if(L[a][b]==L[a+1][b]):
+						pos=1
+						L[a+1][b]+=L[a+1][b]
+						score+=L[a+1][b]
+						L[a+1][b]-=1000000
+						L[a][b]=0
+						break
+					elif(L[a+1][b]!=0):
+						break
+					else:
+						pos=1
+						L[a+1][b]=L[a][b]
+						L[a][b]=0
+						if(a+2<0):
+							a+=1
+						else:
+							break
+		if do:
+			for a in range(4):
+				if(L[a][b]<0):
+					L[a][b]+=1000000
+
 
 def main(L):
 	global moves
@@ -174,7 +203,7 @@ def main(L):
 			else:
 				print ("Its Not POSSIBLE!!")
 		elif(chance=="2" or chance=="s"):
-			#movedown pos=1
+			downfunc(L,1)
 			if(pos==1):
 				moves+=1
 				break
