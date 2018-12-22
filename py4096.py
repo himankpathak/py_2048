@@ -170,6 +170,33 @@ def downfunc(L,do):
 				if(L[a][b]<0):
 					L[a][b]+=1000000
 
+def checklose():
+	global n
+	while True:
+		Lcopy=[]
+		for a in range(4):
+			lcopy=[]
+			for b in range(4):
+				lcopy.append(L[a][b])
+			Lcopy.append(lcopy)
+
+		downfunc(Lcopy,0)
+		if(pos==1):
+			break
+
+		upfunc(Lcopy,0)
+		if(pos==1):
+			break
+
+		rightfunc(Lcopy,0)
+		if(pos==1):
+			break
+
+		leftfunc(Lcopy,0)
+		if(pos==1):
+			break
+		elif(pos==0):
+			n=True
 
 def main(L):
 	global moves
@@ -179,7 +206,8 @@ def main(L):
 	global n
 	pos=0
 	while(n==False):
-		#checklose n=True
+		checklose()
+		pos=0
 		chance=input("Enter Where To Move : ")
 		if(chance=="4" or chance=="a"):
 			leftfunc(L,1)
