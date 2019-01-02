@@ -1,7 +1,6 @@
 from random import *
 from string import *
 
-
 def randomfunc():
 	while(n==False):
 		a1=randint(0,3)
@@ -62,11 +61,13 @@ def highscorefunc(count):
 
 def printfunc():
 	hightilefunc()
+	highscorefunc(1)
 	print ("\n")
 	print ("#"*18)
 	print (">","Score :",score)
 	print (">","Moves :",moves)
 	print (">","Highest Tile :",hightile)
+	print ("High Score :",hplayer,hscore)
 	print ("#"*18,end="\n")
 	print (" "*20,"_"*42)
 	for a in range(4):
@@ -277,7 +278,7 @@ def main(L):
 if __name__ == "__main__":
 
 	print("""
-	Welcome to 4096 v0.1
+	Welcome to 4096 v1.1
 
 	Objective: Make The 4096 Tile To Win!!
 
