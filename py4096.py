@@ -33,6 +33,24 @@ def hightilefunc():
 			if(L[a][b]>hightile):
 				hightile=L[a][b]
 
+def highscorefunc():
+	global score
+	global hplayer
+	global hscore
+	try:
+		file = open("hscore.txt","r+")
+		hplayer=file.readline()
+    	hplayer=hplayer.rstrip("\n")
+    	file.seek(len(hplayer)+2)
+    	hscore=eval(file.read())
+		file.close()
+	except:
+		file=open("hscore.txt","w+")
+		file.write("N/A")
+		file.write("\n")
+		file.write(str(0))
+		file.close()
+
 def printfunc():
 	hightilefunc()
 	print ("\n")
@@ -268,7 +286,8 @@ if __name__ == "__main__":
 				s - Down""")
 	L=[]
 	n=win=False
-	score=pos=hightile=moves=0
+	score=pos=hightile=moves=hscore=0
+	hplayer="N/A"
 	for a in range(4):
 		l=[]
 		for b in range(4):
