@@ -33,16 +33,16 @@ def hightilefunc():
 			if(L[a][b]>hightile):
 				hightile=L[a][b]
 
-def highscorefunc():
+def highscorefunc(count):
 	global score
 	global hplayer
 	global hscore
 	try:
 		file = open("hscore.txt","r+")
 		hplayer=file.readline()
-    	hplayer=hplayer.rstrip("\n")
-    	file.seek(len(hplayer)+2)
-    	hscore=eval(file.read())
+		hplayer=hplayer.rstrip("\n")
+		file.seek(len(hplayer)+2)
+		hscore=eval(file.read())
 		file.close()
 	except:
 		file=open("hscore.txt","w+")
@@ -50,6 +50,15 @@ def highscorefunc():
 		file.write("\n")
 		file.write(str(0))
 		file.close()
+	finally:
+		if(score>=hscore and count==1):
+			hplayer=cplayer
+			hscore=score
+			file=open("hscore.txt","w+")
+			file.write(cplayer)
+			file.write("\n")
+			file.write(str(score))
+			file.close()
 
 def printfunc():
 	hightilefunc()
@@ -294,10 +303,10 @@ if __name__ == "__main__":
 			l.append(0)
 		L.append(l)
 
-	highscorefunc()
-	print "Current Highscore:",hplayer,hscore
-	print "\n\n"
-	
+	highscorefunc(0)
+	print ("Current Highscore:",hplayer,hscore)
+	print ("\n")
+
 	cplayer=input("Enter Your Name : ")
 	cplayer=cplayer.capitalize()
 
