@@ -294,8 +294,13 @@ if __name__ == "__main__":
 			l.append(0)
 		L.append(l)
 
+	highscorefunc()
+	print "Current Highscore:",hplayer,hscore
+	print "\n\n"
+	
 	cplayer=input("Enter Your Name : ")
 	cplayer=cplayer.capitalize()
+
 	randomfunc()
 	randomfunc()
 	while(win==False):
